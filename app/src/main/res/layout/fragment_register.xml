@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:padding="@dimen/body_padding"
+        android:id="@+id/layRegisterEditText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:divider="@drawable/dividier_empty"
+        android:orientation="vertical"
+        android:showDividers="middle"
+        android:layout_centerVertical="true">
+
+        <EditText
+            android:id="@+id/etRegisterEmail"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_login"
+            android:hint="@string/pro_email"
+            android:textColorHint="@color/colorHighlight"
+            android:textColor="@color/wizard_body_text_color"
+            android:padding="@dimen/padding_et_wizard_login"
+            android:inputType="textEmailAddress"
+            android:textSize="@dimen/body_text_size"
+            android:gravity="center_horizontal" />
+        <EditText
+            android:id="@+id/etRegisterUname"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_login"
+            android:hint="@string/username"
+            android:textColorHint="@color/colorHighlight"
+            android:textColor="@color/wizard_body_text_color"
+            android:padding="@dimen/padding_et_wizard_login"
+            android:inputType="textPersonName"
+            android:textSize="@dimen/body_text_size"
+            android:gravity="center_horizontal" />
+        <EditText
+            android:id="@+id/etRegisterPass"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_login"
+            android:hint="@string/password"
+            android:textColorHint="@color/colorHighlight"
+            android:textColor="@color/wizard_body_text_color"
+            android:padding="@dimen/padding_et_wizard_login"
+            android:ems="10"
+            android:inputType="text|textPassword"
+            android:textSize="@dimen/body_text_size"
+            android:gravity="center_horizontal" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layRegisterEditText"
+        android:orientation="vertical"
+        android:padding="@dimen/body_padding">
+        <Button
+            android:id="@+id/btRegisterReg"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            style="@style/ButtonRaised"
+            android:textColor="@color/login_buttons"
+            android:text="@string/register_button"/>
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/transparent">
+        <Button
+            android:id="@+id/btRegisterGoToLogin"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="@string/go_to_login"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            style="?android:attr/borderlessButtonStyle"
+            android:textColor="@color/login_buttons_down"/>
+    </RelativeLayout>
+</RelativeLayout>
+
+

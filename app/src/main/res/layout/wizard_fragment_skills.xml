@@ -1,0 +1,55 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/skills_frag_bgroung"
+    tools:context="reachingimmortality.com.curriculum.ui_wizard.SkillsFragment">
+
+    <LinearLayout
+        android:id="@+id/skillsWizardLayTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/WizardTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_skills" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/skillsWizardLayTitle"
+        android:layout_above="@+id/layDownButtons">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:divider="@drawable/dividier_empty"
+            android:orientation="vertical"
+            android:showDividers="middle">
+
+            <include layout="@layout/content_skill_communication" />
+
+            <include layout="@layout/content_skill_managament" />
+
+            <include layout="@layout/content_skill_job_related" />
+
+            <include layout="@layout/content_skill_dig_comp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <include layout="@layout/content_layout_down_buttons"
+        android:id="@+id/layDownButtons" />
+
+</RelativeLayout>

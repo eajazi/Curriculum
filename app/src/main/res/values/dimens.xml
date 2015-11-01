@@ -1,0 +1,38 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <!-- Screen margins. -->
+    <dimen name="nav_drawer_width">260dp</dimen>
+
+    <dimen name="body_text_size">20sp</dimen>
+    <dimen name="padding_wizard_layout">10dp</dimen>
+    <dimen name="body_element_height">40dp</dimen>
+    <dimen name="card_radius">2dp</dimen>
+
+
+    <dimen name="md_title_frame_margin_bottom">12dp</dimen>
+    <dimen name="md_dialog_frame_margin">24dp</dimen>
+    <dimen name="md_icon_margin">16dp</dimen>
+    <dimen name="md_title_textsize">20sp</dimen>
+
+    <dimen name="title_padding">10dp</dimen>
+    <dimen name="body_padding">10dp</dimen>
+    <dimen name="text_size_wizard_body">15sp</dimen>
+
+    <!-- Edit text padding- Login - WizardActivity -->
+    <dimen name="padding_et_wizard_login">10dp</dimen>
+
+    <dimen name="cardMarginHorizontal">10dp</dimen>
+    <dimen name="cardMarginVertical">8dp</dimen>
+
+    <!-- Material Navigation Drawer -->
+    <dimen name="statusMargin">0dp</dimen>
+    <dimen name="userSpace">164dp</dimen>
+    <dimen name="photoMarginTop">16dp</dimen>
+
+    <!-- match_parent = -1dp / wrap_content = -2dp -->
+    <dimen name="drawerWidth">-1dp</dimen>
+</resources>

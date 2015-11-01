@@ -1,0 +1,29 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/expMainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="reachingimmortality.com.curriculum.ui_wizard.ExportFragment">
+
+    <RelativeLayout
+        android:id="@+id/expRelLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+        <ImageView
+            android:id="@+id/expImgTextAbove"
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/text_img_one_step"/>
+
+        <include layout="@layout/animation_footprint"/>
+
+        <include
+            android:id="@+id/layDownButtons"
+            layout="@layout/content_layout_down_buttons" />
+    </RelativeLayout>
+</RelativeLayout>

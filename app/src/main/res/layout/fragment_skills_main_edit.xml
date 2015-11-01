@@ -1,0 +1,91 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="reachingimmortality.com.curriculum.SkillsMainEditFragment">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/layTitle"
+            android:layout_width="match_parent"
+            android:layout_height="72dp">
+
+            <RelativeLayout
+                android:id="@+id/layIcon"
+                android:layout_width="72dp"
+                android:layout_height="72dp">
+
+                <ImageView
+                    android:id="@+id/skillMainEditCircle"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/icon_circle_red" />
+
+                <ImageView
+                    android:id="@+id/skillMainEditCircleIcon"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"/>
+
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginEnd="16dp"
+                android:layout_toEndOf="@+id/layIcon"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:layout_alignWithParentIfMissing="true">
+
+                <TextView
+                    android:id="@+id/skillMainEditTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:textColor="#87000000"
+                    android:textSize="16sp"
+                    android:layout_centerInParent="true"
+                    android:typeface="sans" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/text_secondary_light"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/skillMainEditEt"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="6dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text|textMultiLine|textCapSentences"
+                android:gravity="top"
+                android:hint="@string/write_here"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</FrameLayout>

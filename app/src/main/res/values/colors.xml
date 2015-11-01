@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorAccent">#d32f2f</color>
+    <color name="colorPrimary">#c62828</color>
+    <color name="colorPrimaryDark">#b71c1c</color>
+    <color name="textColorPrimary">#fff</color>
+    <color name="colorHighlight">#ddaaaaaa</color>
+    <color name="statusBarColor">@color/colorPrimaryDark</color>
+
+    <!-- Login Fragment -->
+    <color name="login_frag_bgroung">#5E35B1</color>
+    <color name="login_et_pressed">#512DA8</color>
+    <color name="login_et">#4527A0</color>
+
+    <!-- Register Fragment -->
+    <color name="register_frag_bgroung">#8E24AA</color>
+    <color name="register_et_pressed">#7B1FA2</color>
+    <color name="register_et">#6A1B9A</color>
+
+    <!-- Personal Records Fragment -->
+    <color name="per_records_frag_bgroung">#3949AB</color>
+    <color name="pers_et_pressed">#303F9F</color>
+    <color name="pers_et">#283593</color>
+
+    <!-- Application Fragment -->
+    <color name="app_frag_bgroung">#1E88E5</color>
+    <color name="app_et_pressed">#0288D1</color>
+    <color name="app_et">#0277BD</color>
+    <color name="app_dividier">#E3F2FD</color>
+
+    <!-- Work Experience Fragment -->
+    <color name="work_frag_bgroung">#039BE5</color>
+    <color name="work_et_pressed">#0288D1</color>
+    <color name="work_et">#0277BD</color>
+    <color name="dividier_exp">#B3E5FC</color>
+
+    <!-- Education Fragment -->
+    <color name="educ_frag_bgroung">#00ACC1</color>
+    <color name="educ_et_pressed">#0097A7</color>
+    <color name="educ_et">#00838F</color>
+    <color name="dividier_edu">#B2EBF2</color>
+
+    <!-- Personal Skills Fragment -->
+    <color name="lang_frag_bgroung">#00897B</color>
+    <color name="lang_et_pressed">#00796B</color>
+    <color name="lang_et">#00695C</color>
+
+    <!-- Other Personal Skills Fragment -->
+    <color name="skills_frag_bgroung">#455A64</color>
+    <color name="skills_header_title">#E91E63</color>
+
+    <color name="export_frag_bground">#90A4AE</color>
+
+
+    <color name="card_shadow_1_on_press">#43A047 </color>
+    <color name="card_shadow_2_on_press">#2E7D32 </color>
+    <color name="card_background_on_press">#2E7D32 </color>
+    <color name="button_flat">@android:color/white</color>
+    <color name="wizard_body_text_color">@android:color/white</color>
+    <color name="wizard_title">@android:color/white</color>
+    <color name="wizard_button">@android:color/white</color>
+
+    <color name="et_trans_bground">#80000000</color>
+    <color name="et_trans_press">#616161</color>
+
+    <color name="transparent">#80000000</color>
+    <color name="login_buttons">#343434</color>
+    <color name="login_buttons_down">@android:color/white</color>
+
+    <color name="material_dialog_buttons">#00897B</color>
+    <!-- TEXT COLORS LIGHT BACKGROUND-->
+    <color name="text_base_color">#000000</color>
+    <color name="text_primary_light">#DE000000</color>
+    <color name="text_secondary_light">#8A000000</color>
+    <color name="text_hint_disabled_light">#61000000</color>
+    <color name="dividier">#1F000000</color>
+
+    <!-- TEXT COLORS DARK BACKGROUND-->
+    <color name="text_base_color_dark">#FFFFFF</color>
+    <color name="text_primary_dark">#FFFFFF</color>
+    <color name="text_secondary_dark">#B3FFFFFF</color>
+    <color name="text_hint_disabled_dark">#4DFFFFFF</color>
+</resources>

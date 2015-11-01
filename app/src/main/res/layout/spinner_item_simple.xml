@@ -1,0 +1,11 @@
+<CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/text1"
+    android:padding="10dp"
+    android:singleLine="true"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="@color/text_primary_light"
+    android:textSize="16sp"
+    android:drawableEnd="@mipmap/ic_triangle_arrow_down"
+    android:drawableRight="@mipmap/ic_triangle_arrow_down"
+    android:ellipsize="marquee"/>

@@ -1,0 +1,128 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_frag_bgroung"
+    tools:context="beastmode.curriculumvitae.Wizard.ApplicationFragment">
+
+    <LinearLayout
+        android:id="@+id/layAppViewTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvAppTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/title_application"
+            android:textColor="@color/wizard_title"
+            android:textSize="30sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollApp"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/layAppViewTitle">
+
+        <LinearLayout
+            android:id="@+id/layTypeApp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layTitle"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:fontFamily="sans-serif"
+                android:paddingBottom="16dp"
+                android:paddingTop="16dp"
+                android:text="@string/application_type"
+                android:textColor="@color/text_primary_dark"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:background="@color/app_dividier" />
+
+            <Spinner
+                android:id="@+id/appWizardSpinnerType"
+                style="@style/MySpinnerStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:fontFamily="sans-serif"
+                android:paddingBottom="16dp"
+                android:paddingTop="16dp"
+                android:text="@string/application_description"
+                android:textColor="@color/text_primary_dark"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:background="@color/app_dividier" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/appWizardEtDescr"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="50dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:background="@color/transparent"
+                android:gravity="top"
+                android:hint="@string/Description"
+                android:inputType="text|textMultiLine|textCapSentences"
+                app:met_baseColor="@color/text_base_color_dark"
+                app:met_primaryColor="@android:color/white" />
+        </LinearLayout>
+
+    </ScrollView>
+
+    <include
+        android:id="@+id/layDownButtons"
+        layout="@layout/content_layout_down_buttons" />
+
+</RelativeLayout>

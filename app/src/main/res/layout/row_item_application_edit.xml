@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/Card_View"
+    style="@style/CardViewStyle"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="2dp"
+    card_view:cardElevation="8dp">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <RelativeLayout
+            android:id="@+id/layTitle"
+            android:layout_width="match_parent"
+            android:layout_height="72dp">
+            <RelativeLayout
+                android:id="@+id/layIcon"
+                android:layout_width="72dp"
+                android:layout_height="72dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/icon_circle_red"/>
+
+                <ImageView
+                    android:id="@+id/appMainCircleIcon"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:src="@mipmap/ic_survey_white"
+                    android:layout_centerInParent="true" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_toRightOf="@+id/layIcon"
+                android:layout_toEndOf="@+id/layIcon"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:layout_alignWithParentIfMissing="true">
+
+                <TextView
+                    android:id="@+id/proTitleEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp"
+                    android:text="Application"
+                    android:layout_centerInParent="true"
+                    android:typeface="sans" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/text_secondary_light"
+            android:layout_below="@+id/layTitle"
+            android:layout_centerHorizontal="true" />
+
+        <LinearLayout
+            android:id="@+id/layTypeApp"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layTitle">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:paddingBottom="16dp"
+                android:paddingTop="16dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/application_type"
+                android:textColor="@color/text_primary_light"
+                android:textSize="16sp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:background="@color/text_secondary_light" />
+            <Spinner
+                android:id="@+id/appMainEditSpinnerType"
+                style="@style/Widget.AppCompat.Spinner.DropDown"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layTypeApp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:paddingBottom="16dp"
+                android:paddingTop="16dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/application_description"
+                android:textColor="@color/text_primary_light"
+                android:textSize="16sp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:background="@color/text_secondary_light" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/appMainEditDescription"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="6dp"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:inputType="text|textMultiLine|textCapSentences"
+                android:hint="@string/write_here"
+                android:gravity="top" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

@@ -1,0 +1,241 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/educ_frag_bgroung">
+
+    <LinearLayout
+        android:id="@+id/layTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:divider="@drawable/dividier_empty"
+        android:orientation="vertical"
+        android:showDividers="middle">
+
+        <TextView
+            android:id="@+id/eduWizTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="@string/title_education"
+            style="@style/WizardTitle"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/layDownButtons"
+        android:layout_below="@+id/layTitle">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/layFromDate"
+                android:layout_width="fill_parent"
+                android:layout_height="72dp">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_alignWithParentIfMissing="true"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_toStartOf="@+id/eduWizBtCalFrom"
+                    android:orientation="vertical"
+                    android:paddingBottom="16dp"
+                    android:paddingTop="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:text="@string/from_date"
+                        android:textColor="@color/text_primary_dark"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/eduWizFromDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:textColor="@color/text_secondary_dark"
+                        android:textSize="14sp"
+                        android:text="@string/select_date"/>
+
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/eduWizBtCalFrom"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="16dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@mipmap/ic_calendar_light" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginStart="16dp"
+                    android:background="@color/dividier_edu" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layToDate"
+                android:layout_width="fill_parent"
+                android:layout_height="72dp"
+                android:layout_below="@+id/layFromDate">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_alignWithParentIfMissing="true"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_toStartOf="@+id/expWizBtCalTo"
+                    android:orientation="vertical"
+                    android:paddingBottom="16dp"
+                    android:paddingTop="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:text="@string/to_date"
+                        android:textColor="@color/text_primary_dark"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/eduWizToDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:textColor="@color/text_secondary_dark"
+                        android:textSize="14sp"
+                        android:text="@string/select_date"/>
+
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/eduWizBtCalTo"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="16dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@mipmap/ic_calendar_light" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginStart="16dp"
+                    android:background="@color/dividier_edu" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layToDate"
+                android:orientation="vertical">
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/eduWizEtQualification"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginStart="16dp"
+                    android:hint="@string/edu_qualification"
+                    android:inputType="text|textCapSentences"
+                    app:met_floatingLabel="normal"
+                    app:met_baseColor="@color/text_base_color_dark"
+                    app:met_primaryColor="@android:color/white"/>
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/eduWizEtProvider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginStart="16dp"
+                    android:hint="@string/edu_provider"
+                    android:inputType="text|textCapSentences"
+                    app:met_floatingLabel="normal"
+                    app:met_baseColor="@color/text_base_color_dark"
+                    app:met_primaryColor="@android:color/white"/>
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/eduWizEtCity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginStart="16dp"
+                    android:hint="@string/city"
+                    android:inputType="text|textCapSentences"
+                    app:met_floatingLabel="normal"
+                    app:met_baseColor="@color/text_base_color_dark"
+                    app:met_primaryColor="@android:color/white"/>
+
+                <com.rengwuxian.materialedittext.MaterialAutoCompleteTextView
+                    android:id="@+id/eduWizEtCountry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginStart="16dp"
+                    android:hint="@string/country"
+                    android:inputType="text|textCapSentences"
+                    app:met_floatingLabel="normal"
+                    app:met_baseColor="@color/text_base_color_dark"
+                    app:met_primaryColor="@android:color/white"/>
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/eduWizEtMainSub"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginStart="16dp"
+                    android:gravity="top"
+                    android:hint="@string/edu_main_subjects"
+                    android:inputType="text|textMultiLine|textCapSentences"
+                    app:met_floatingLabel="normal"
+                    app:met_baseColor="@color/text_base_color_dark"
+                    app:met_primaryColor="@android:color/white"/>
+            </LinearLayout>
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <include
+        android:id="@+id/layDownButtons"
+        layout="@layout/content_layout_down_buttons" />
+
+</RelativeLayout>

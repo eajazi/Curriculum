@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/Card_View"
+    style="@style/CardViewStyle"
+    android:layout_width="fill_parent"
+    android:layout_height="88dp"
+    android:clickable="true">
+
+        <ImageView
+            android:id="@+id/sectionThreeLineIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_centerVertical="true"
+            android:alpha="0.54"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginEnd="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_toRightOf="@+id/sectionThreeLineIcon"
+            android:layout_toEndOf="@+id/sectionThreeLineIcon"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:layout_alignWithParentIfMissing="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/sectionThreeLineTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:textColor="#87000000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/sectionThreeLineSubtitleFirst"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:textColor="#57000000"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/sectionThreeLineSubtitleSec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:textColor="#57000000"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/Card_View"
+    style="@style/CardViewStyle"
+    android:layout_width="fill_parent"
+    android:layout_height="72dp">
+
+        <ImageView
+            android:id="@+id/circleIconMail"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:alpha="0.54"
+            android:src="@drawable/icon_circle"/>
+
+        <ImageView
+            android:id="@+id/sectionTwoLinesIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:src="@mipmap/ic_user_white"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginEnd="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_toRightOf="@+id/sectionTwoLinesIcon"
+            android:layout_toEndOf="@+id/sectionTwoLinesIcon"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:layout_alignWithParentIfMissing="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/sectionTwoLinesTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:textColor="#87000000"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/sectionTwoLinesSubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:textColor="#57000000"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+</RelativeLayout>

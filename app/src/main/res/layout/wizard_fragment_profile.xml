@@ -1,0 +1,171 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/per_records_frag_bgroung">
+
+    <LinearLayout
+        android:id="@+id/layPersTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/titleProfileAddEdit"
+            style="@style/WizardTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_profile" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollEducation"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/layPersTitle"
+        android:layout_above="@+id/layDownButtons">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:showDividers="middle">
+
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/proWizardName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:hint="@string/pro_name"
+                android:inputType="textCapSentences"
+                app:met_baseColor="@color/text_base_color_dark"
+                app:met_floatingLabel="normal"
+                app:met_primaryColor="@android:color/white" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/proWizardSurname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:hint="@string/pro_surname"
+                android:inputType="textCapSentences"
+                app:met_baseColor="@color/text_base_color_dark"
+                app:met_floatingLabel="normal"
+                app:met_primaryColor="@android:color/white" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/proWizardEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:hint="@string/pro_email"
+                android:inputType="textEmailAddress"
+                app:met_baseColor="@color/text_base_color_dark"
+                app:met_floatingLabel="normal"
+                app:met_primaryColor="@android:color/white" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/proWizardStreetAdress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:hint="@string/pro_street_adress"
+                android:inputType="textCapSentences"
+                app:met_baseColor="@color/text_base_color_dark"
+                app:met_floatingLabel="normal"
+                app:met_primaryColor="@android:color/white" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/proWizardCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:hint="@string/city"
+                android:inputType="textCapSentences"
+                app:met_baseColor="@color/text_base_color_dark"
+                app:met_floatingLabel="normal"
+                app:met_primaryColor="@android:color/white" />
+
+            <com.rengwuxian.materialedittext.MaterialAutoCompleteTextView
+                android:id="@+id/proWizardCountry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:hint="@string/country"
+                android:imeOptions="actionNext"
+                android:inputType="textCapSentences"
+                app:met_baseColor="@color/text_base_color_dark"
+                app:met_floatingLabel="normal"
+                app:met_primaryColor="@android:color/white" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/proWizardPostal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:hint="@string/pro_postal_code"
+                android:inputType="textCapSentences"
+                app:met_baseColor="@color/text_base_color_dark"
+                app:met_floatingLabel="normal"
+                app:met_primaryColor="@android:color/white" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/proWizardTelNum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:hint="@string/pro_tel_number"
+                android:inputType="textPhonetic"
+                app:met_baseColor="@color/text_base_color_dark"
+                app:met_floatingLabel="normal"
+                app:met_primaryColor="@android:color/white" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/proWizardWebBlog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="50dp"
+                android:hint="@string/pro_web_blog"
+                android:inputType="textUri"
+                app:met_baseColor="@color/text_base_color_dark"
+                app:met_floatingLabel="normal"
+                app:met_primaryColor="@android:color/white" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+    <include
+        android:id="@+id/layDownButtons"
+        layout="@layout/content_layout_down_buttons" />
+
+</RelativeLayout>

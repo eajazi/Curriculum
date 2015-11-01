@@ -1,0 +1,113 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlActivated">@android:color/white</item>
+
+        <!-- <item name="android:windowTranslucentNavigation" tools:targetApi="19">true</item> -->
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <!-- Translucent status bar. -->
+        <item name="android:windowTranslucentStatus" tools:targetApi="19">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <!-- Wizard theme. -->
+    <style name="WizardTheme" parent="ThemeOverlay.AppCompat.Dark">
+        <!-- Customize your theme here. -->
+        <item name="colorAccent">@android:color/white</item>
+        <item name="colorControlActivated">@android:color/white</item>
+
+        <!-- <item name="android:windowTranslucentNavigation" tools:targetApi="19">true</item> -->
+    </style>
+
+    <style name="CardViewStyle" parent="android:Widget.TextView">
+        <item name="android:foreground">@drawable/card_foreground</item>
+    </style>
+
+    <style name="ButtonRaised">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:minWidth">88dp</item>
+        <item name="android:minHeight">36dp</item>
+        <item name="android:layout_margin">3dp</item>
+        <item name="android:background">@drawable/raised_button</item>
+    </style>
+
+    <!-- Material navigation drawer -->
+    <style name="ImageHeaderLight" parent="MaterialNavigationDrawerTheme.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="drawerType">@integer/DRAWERTYPE_IMAGE</item>
+    </style>
+
+    <declare-styleable name="MaterialSection">
+        <attr name="sectionColorIcon" format="color" />
+        <attr name="sectionColorText" format="color" />
+        <attr name="sectionColorNotification" format="color" />
+        <attr name="sectionBackgroundColorPressed" format="color" />
+        <attr name="sectionBackgroundColorSelected" format="color" />
+        <attr name="sectionBackgroundColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="MaterialNavigationDrawer">
+        <attr name="rippleBackport" format="boolean" />
+        <attr name="drawerType" format="integer" />
+        <attr name="uniqueToolbarColor" format="boolean" />
+        <attr name="singleAccount" format="boolean" />
+        <attr name="multipaneSupport" format="boolean" />
+        <attr name="drawerColor" format="color" />
+        <attr name="sectionStyle" format="reference" />
+        <attr name="subheaderStyle" format="reference" />
+        <attr name="accountStyle" format="reference" />
+        <attr name="learningPattern" format="boolean" />
+        <attr name="defaultSectionLoaded" format="integer" />
+        <attr name="toolbarElevation" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="MaterialSubheader">
+        <attr name="subheaderTitleColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="MaterialAccount">
+        <attr name="titleColor" format="color" />
+        <attr name="subtitleColor" format="color" />
+    </declare-styleable>
+
+    <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">@android:color/white</item>
+        <item name="tabBackground">@color/colorPrimary</item>
+        <item name="tabSelectedTextColor">@android:color/white</item>
+    </style>
+
+    <style name="MyCustomTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/transparent</item>
+    </style>
+
+    <style name="MySpinnerStyle" parent="Widget.AppCompat.Spinner.DropDown">
+        <item name="colorAccent">@android:color/white</item>
+    </style>
+
+    <style name="WizardTitle" parent="TextAppearance.AppCompat.Headline">
+        <item name="android:textSize">30sp</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="DarkStyle" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="colorControlHighlight">@android:color/white</item>
+    </style>
+</resources>

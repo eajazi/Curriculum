@@ -1,0 +1,52 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/work_frag_bgroung">
+
+    <LinearLayout
+        android:id="@+id/layExpTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/WizardTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_experience" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/layExpTitle"
+        android:layout_above="@+id/layExpButtons">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerViewExp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="16dp"/>
+    </RelativeLayout>
+
+
+    <com.software.shell.fab.ActionButton
+        android:id="@+id/fabWizExp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="40dp"
+        fab:button_color="@color/fab_material_amber_900"/>
+
+
+    <include
+        android:id="@+id/layExpButtons"
+        layout="@layout/content_layout_down_buttons" />
+</RelativeLayout>
