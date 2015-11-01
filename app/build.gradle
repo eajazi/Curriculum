@@ -2,11 +2,11 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
 android {
+    signingConfigs {
+    }
     compileSdkVersion 23
-    buildToolsVersion "23.0.1"
-
+    buildToolsVersion '23.0.2'
     useLibrary 'org.apache.http.legacy'
-
     defaultConfig {
         applicationId "reachingimmortality.com.curriculum"
         minSdkVersion 17
@@ -23,29 +23,23 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'com.android.support:design:23.1.0'
     compile 'com.android.support:cardview-v7:23.1.0'
     compile 'com.android.support:recyclerview-v7:23.1.0'
     compile 'com.android.support:support-v13:23.1.0'
-
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.balysv:material-ripple:1.0.1'
     compile 'com.rengwuxian.materialedittext:library:2.1.4'
     compile 'com.github.shell-software:fab:1.1.2'
-
     compile 'com.loopj.android:android-async-http:1.4.9'
     compile 'com.google.code.gson:gson:2.3.1'
-
     compile files('libs/org.apache.http.legacy.jar')
     compile 'org.jetbrains:annotations:13.0'
     compile project(':core')
-
     compile 'com.google.android.gms:play-services-identity:8.1.0'
     compile 'com.google.android.gms:play-services-plus:8.1.0'
-
-
 }

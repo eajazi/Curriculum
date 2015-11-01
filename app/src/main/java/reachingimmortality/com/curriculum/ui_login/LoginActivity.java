@@ -17,6 +17,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
@@ -128,13 +129,62 @@ public class LoginActivity extends FragmentActivity implements LoginCallback, Fr
     @Override
     protected void onStart() {
         super.onStart();
-        //mGoogleApiClient.connect();
+        // Clear the default account so that GoogleApiClient will not automatically
+        // connect in the future.
+        if (mGoogleApiClient.isConnected()) {
+            Plus.AccountApi.clearDefaultAccount(mGoogleApiClient);
+            mGoogleApiClient.disconnect();
+        }
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        //mGoogleApiClient.disconnect();
+        if (mGoogleApiClient.isConnected()) {
+            mGoogleApiClient.disconnect();
+        }
+    }
+    // [START on_save_instance_state]
+    //****************************************************************************************************************
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(KEY_IS_RESOLVING, mIsResolving);
+        outState.putBoolean(KEY_SHOULD_RESOLVE, mShouldResolve);
+    }
+
+    // [START on_activity_result]
+    //****************************************************************************************************************
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.d(TAG, "onActivityResult:" + requestCode + ":" + resultCode + ":" + data);
+
+        if (requestCode == RC_SIGN_IN) {
+            // If the error resolution was not successful we should not resolve further.
+            if (resultCode != RESULT_OK) {
+                mShouldResolve = false;
+            }
+
+            mIsResolving = false;
+            mGoogleApiClient.connect();
+        }
+    }
+
+    // [START onRequestPermissionsResult]
+    //****************************************************************************************************************
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String permissions[],
+                                           @NonNull int[] grantResults) {
+        Log.d(TAG, "onRequestPermissionsResult:" + requestCode);
+        if (requestCode == RC_PERM_GET_ACCOUNTS) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                tryGoogleLogin();
+            } else {
+                Log.d(TAG, "GET_ACCOUNTS Permission Denied.");
+            }
+        }
     }
 
     //Callback method login for user login
@@ -416,11 +466,11 @@ public class LoginActivity extends FragmentActivity implements LoginCallback, Fr
                 pDialog.hide();
                 pDialog.dismiss();
 
-                if(statusCode == 404){
+                if (statusCode == 404) {
                     Toast.makeText(getApplicationContext(), "Requested resource not found", Toast.LENGTH_LONG).show();
-                }else if(statusCode == 500){
+                } else if (statusCode == 500) {
                     Toast.makeText(getApplicationContext(), "Something went wrong at server end", Toast.LENGTH_LONG).show();
-                }else{
+                } else {
                     Toast.makeText(getApplicationContext(), "Unexpected Error occcured! [Most common Error: Device might not be connected to Internet]", Toast.LENGTH_LONG).show();
                 }
             }
@@ -433,16 +483,16 @@ public class LoginActivity extends FragmentActivity implements LoginCallback, Fr
                     JSONArray arr = new JSONArray(responseString);
                     System.out.println(arr.length());
 
-                    for(int i=0; i<arr.length();i++){
+                    for (int i = 0; i < arr.length(); i++) {
 
-                        JSONObject jsonUserApp = (JSONObject)arr.get(i);
+                        JSONObject jsonUserApp = (JSONObject) arr.get(i);
 
                         String isApp = jsonUserApp.getString(JSONFunctions.IS_USER_APP);
                         String error = jsonUserApp.getString(JSONFunctions.JSON_ERROR);
 
-                        if(Boolean.parseBoolean(isApp)){
+                        if (Boolean.parseBoolean(isApp)) {
                             //INSERTING APPLICATION DATA
-                            ContentValues values= new ContentValues();
+                            ContentValues values = new ContentValues();
 
                             values.put(MyContentProvider.APPLICATION_ID, jsonUserApp.getString(JSONFunctions.APPLICATION_ID));
                             values.put(MyContentProvider.APPLICATION_DESCRIPTION, jsonUserApp.getString(JSONFunctions.APPLICATION_DESCRIPTION));
@@ -451,7 +501,7 @@ public class LoginActivity extends FragmentActivity implements LoginCallback, Fr
                             getContentResolver().insert(MyContentProvider.CONTENT_URI_APPLICATION, values);
 
                             //INSERTING USER APPLICATION DATA
-                            ContentValues userAppValues= new ContentValues();
+                            ContentValues userAppValues = new ContentValues();
 
                             userAppValues.put(MyContentProvider.APPLICATION_ID, jsonUserApp.getString(JSONFunctions.USER_APPLICATION_ID));
                             userAppValues.put(MyContentProvider.USER_APPLICATION_APPLICATION_FK, jsonUserApp.getString(JSONFunctions.APPLICATION_ID));
@@ -459,8 +509,8 @@ public class LoginActivity extends FragmentActivity implements LoginCallback, Fr
 
                             getContentResolver().insert(MyContentProvider.CONTENT_URI_USER_APPLICATION, userAppValues);
 
-                        }else if(Integer.parseInt(error) == 3){
-                            Toast.makeText(getApplicationContext(),getResources().getString(R.string.message_unexpected_message),Toast.LENGTH_SHORT).show();
+                        } else if (Integer.parseInt(error) == 3) {
+                            Toast.makeText(getApplicationContext(), getResources().getString(R.string.message_unexpected_message), Toast.LENGTH_SHORT).show();
                         }
                     }
                     //GET USER WORK EXPERIENCE DATA
@@ -489,11 +539,11 @@ public class LoginActivity extends FragmentActivity implements LoginCallback, Fr
                 pDialog.hide();
                 pDialog.dismiss();
 
-                if(statusCode == 404){
+                if (statusCode == 404) {
                     Toast.makeText(getApplicationContext(), "Requested resource not found", Toast.LENGTH_LONG).show();
-                }else if(statusCode == 500){
+                } else if (statusCode == 500) {
                     Toast.makeText(getApplicationContext(), "Something went wrong at server end", Toast.LENGTH_LONG).show();
-                }else{
+                } else {
                     Toast.makeText(getApplicationContext(), "Unexpected Error occcured! [Most common Error: Device might not be connected to Internet]", Toast.LENGTH_LONG).show();
                 }
             }
@@ -506,17 +556,17 @@ public class LoginActivity extends FragmentActivity implements LoginCallback, Fr
                     JSONArray arr = new JSONArray(responseString);
                     System.out.println(arr.length());
 
-                    for(int i=0; i<arr.length(); i++){
-                        Log.d("","experience insert");
-                        JSONObject jsonUserExp = (JSONObject)arr.get(i);
+                    for (int i = 0; i < arr.length(); i++) {
+                        Log.d("", "experience insert");
+                        JSONObject jsonUserExp = (JSONObject) arr.get(i);
 
                         String sucess = jsonUserExp.getString(JSONFunctions.JSON_SUCCESS);
                         String error = jsonUserExp.getString(JSONFunctions.JSON_ERROR);
 
-                        if(Integer.parseInt(sucess) == 1){
+                        if (Integer.parseInt(sucess) == 1) {
                             String isExp = jsonUserExp.getString(JSONFunctions.IS_USER_EXP);
 
-                            if(Boolean.parseBoolean(isExp)) {
+                            if (Boolean.parseBoolean(isExp)) {
 
                                 //INSERTING EXPERIENCE DATA
                                 ContentValues values = new ContentValues();
@@ -546,8 +596,8 @@ public class LoginActivity extends FragmentActivity implements LoginCallback, Fr
 
                             }
 
-                        }else if(Integer.parseInt(error) == 3){
-                            Toast.makeText(getApplicationContext(),getResources().getString(R.string.message_unexpected_message),Toast.LENGTH_SHORT).show();
+                        } else if (Integer.parseInt(error) == 3) {
+                            Toast.makeText(getApplicationContext(), getResources().getString(R.string.message_unexpected_message), Toast.LENGTH_SHORT).show();
                         }
                     }
                     //GET USER EDUCATION DATA
@@ -577,11 +627,11 @@ public class LoginActivity extends FragmentActivity implements LoginCallback, Fr
                 pDialog.hide();
                 pDialog.dismiss();
 
-                if(statusCode == 404){
+                if (statusCode == 404) {
                     Toast.makeText(getApplicationContext(), "Requested resource not found", Toast.LENGTH_LONG).show();
-                }else if(statusCode == 500){
+                } else if (statusCode == 500) {
                     Toast.makeText(getApplicationContext(), "Something went wrong at server end", Toast.LENGTH_LONG).show();
-                }else{
+                } else {
                     Toast.makeText(getApplicationContext(), "Unexpected Error occcured! [Most common Error: Device might not be connected to Internet]", Toast.LENGTH_LONG).show();
                 }
             }
@@ -594,18 +644,18 @@ public class LoginActivity extends FragmentActivity implements LoginCallback, Fr
                     JSONArray arr = new JSONArray(responseString);
                     System.out.println(arr.length());
 
-                    for(int i=0; i<arr.length(); i++){
+                    for (int i = 0; i < arr.length(); i++) {
 
-                        JSONObject jsonUserEdu = (JSONObject)arr.get(i);
+                        JSONObject jsonUserEdu = (JSONObject) arr.get(i);
 
                         String sucess = jsonUserEdu.getString(JSONFunctions.JSON_SUCCESS);
                         String error = jsonUserEdu.getString(JSONFunctions.JSON_ERROR);
 
-                        if(Integer.parseInt(sucess) == 1){
+                        if (Integer.parseInt(sucess) == 1) {
                             String isEdu = jsonUserEdu.getString(JSONFunctions.IS_USER_EDU);
 
-                            if(Boolean.parseBoolean(isEdu)) {
-                                Log.d("","insertEducation");
+                            if (Boolean.parseBoolean(isEdu)) {
+                                Log.d("", "insertEducation");
                                 //INSERTING EDUCATION DATA
                                 ContentValues values = new ContentValues();
 
@@ -631,8 +681,8 @@ public class LoginActivity extends FragmentActivity implements LoginCallback, Fr
 
                             }
 
-                        }else if(Integer.parseInt(error) == 3){
-                            Toast.makeText(getApplicationContext(),getResources().getString(R.string.message_unexpected_message),Toast.LENGTH_SHORT).show();
+                        } else if (Integer.parseInt(error) == 3) {
+                            Toast.makeText(getApplicationContext(), getResources().getString(R.string.message_unexpected_message), Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -662,11 +712,11 @@ public class LoginActivity extends FragmentActivity implements LoginCallback, Fr
                 pDialog.hide();
                 pDialog.dismiss();
 
-                if(statusCode == 404){
+                if (statusCode == 404) {
                     Toast.makeText(getApplicationContext(), "Requested resource not found", Toast.LENGTH_LONG).show();
-                }else if(statusCode == 500){
+                } else if (statusCode == 500) {
                     Toast.makeText(getApplicationContext(), "Something went wrong at server end", Toast.LENGTH_LONG).show();
-                }else{
+                } else {
                     Toast.makeText(getApplicationContext(), "Unexpected Error occcured! [Most common Error: Device might not be connected to Internet]", Toast.LENGTH_LONG).show();
                 }
             }
@@ -679,17 +729,17 @@ public class LoginActivity extends FragmentActivity implements LoginCallback, Fr
                     JSONArray arr = new JSONArray(responseString);
                     System.out.println(arr.length());
 
-                    for(int i=0; i<arr.length(); i++){
+                    for (int i = 0; i < arr.length(); i++) {
 
-                        JSONObject jsonUserLang = (JSONObject)arr.get(i);
+                        JSONObject jsonUserLang = (JSONObject) arr.get(i);
 
                         String sucess = jsonUserLang.getString(JSONFunctions.JSON_SUCCESS);
                         String error = jsonUserLang.getString(JSONFunctions.JSON_ERROR);
 
-                        if(Integer.parseInt(sucess) == 1){
+                        if (Integer.parseInt(sucess) == 1) {
                             String isLang = jsonUserLang.getString(JSONFunctions.IS_USER_LANG);
 
-                            if(Boolean.parseBoolean(isLang)) {
+                            if (Boolean.parseBoolean(isLang)) {
 
                                 //INSERTING LANGUAGE DATA
                                 ContentValues values = new ContentValues();
@@ -711,8 +761,8 @@ public class LoginActivity extends FragmentActivity implements LoginCallback, Fr
 
                             }
 
-                        }else if(Integer.parseInt(error) == 3){
-                            Toast.makeText(getApplicationContext(),getResources().getString(R.string.message_unexpected_message),Toast.LENGTH_SHORT).show();
+                        } else if (Integer.parseInt(error) == 3) {
+                            Toast.makeText(getApplicationContext(), getResources().getString(R.string.message_unexpected_message), Toast.LENGTH_SHORT).show();
                         }
 
                     }
@@ -848,50 +898,39 @@ public class LoginActivity extends FragmentActivity implements LoginCallback, Fr
                 .show();
     }
 
+
     //GOOGLE SIGN-IN CALLBACKS
     //***********************************************************************************************************************
     //***********************************************************************************************************************
-    // [START on_save_instance_state]
+    //GOOGLE SIGN IN
+    //***********************************************************************************************************************
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putBoolean(KEY_IS_RESOLVING, mIsResolving);
-        outState.putBoolean(KEY_SHOULD_RESOLVE, mShouldResolve);
+    public void onSignInClicked() {
+        // User clicked the sign-in button, so begin the sign-in process and automatically
+        // attempt to resolve any errors that occur.
+        mShouldResolve = true;
+        mGoogleApiClient.connect();
+
+        // Show a message to the user that we are signing in.
+        pDialog = new MaterialDialog.Builder(this)
+                .title(R.string.p_dialog_login_title)
+                .content(R.string.p_dialog_content_wait)
+                .theme(Theme.LIGHT)
+                .widgetColorRes(R.color.material_dialog_buttons)
+                .progress(true, 0)
+                .show();
     }
-    // [END on_save_instance_state]
 
-    // [START on_activity_result]
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        Log.d(TAG, "onActivityResult:" + requestCode + ":" + resultCode + ":" + data);
-
-        if (requestCode == RC_SIGN_IN) {
-            // If the error resolution was not successful we should not resolve further.
-            if (resultCode != RESULT_OK) {
-                mShouldResolve = false;
-            }
-
-            mIsResolving = false;
-            mGoogleApiClient.connect();
+    //GOOGLE SIGN OUT
+    //***********************************************************************************************************************
+    private void onSignOutClicked() {
+        // Clear the default account so that GoogleApiClient will not automatically
+        // connect in the future.
+        if (mGoogleApiClient.isConnected()) {
+            Plus.AccountApi.clearDefaultAccount(mGoogleApiClient);
+            mGoogleApiClient.disconnect();
         }
     }
-    // [END on_activity_result]
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String permissions[],
-                                           @NonNull int[] grantResults) {
-        Log.d(TAG, "onRequestPermissionsResult:" + requestCode);
-        if (requestCode == RC_PERM_GET_ACCOUNTS) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                //stillToCOme
-            } else {
-                Log.d(TAG, "GET_ACCOUNTS Permission Denied.");
-            }
-        }
-    }
-
     @Override
     public void onConnected(Bundle bundle) {
         // onConnected indicates that an account was selected on the device, that the selected
@@ -900,7 +939,8 @@ public class LoginActivity extends FragmentActivity implements LoginCallback, Fr
         Log.d(TAG, "onConnected:" + bundle);
         mShouldResolve = false;
 
-        loginWithGoogle(true);
+        // Show the signed-in UI
+        tryGoogleLogin();
     }
 
     @Override
@@ -908,8 +948,12 @@ public class LoginActivity extends FragmentActivity implements LoginCallback, Fr
         // The connection to Google Play services was lost. The GoogleApiClient will automatically
         // attempt to re-connect. Any UI elements that depend on connection to Google APIs should
         // be hidden or disabled until onConnected is called again.
-        Toast.makeText(this,"onConnectionSuspended:" + i,Toast.LENGTH_SHORT).show();
         Log.w(TAG, "onConnectionSuspended:" + i);
+        // Show the signed-out UI
+        if (pDialog != null){
+            pDialog.dismiss();
+            pDialog.hide();
+        }
     }
 
     @Override
@@ -918,7 +962,6 @@ public class LoginActivity extends FragmentActivity implements LoginCallback, Fr
         // grant permissions or resolve an error in order to sign in. Refer to the javadoc for
         // ConnectionResult to see possible error codes.
         Log.d(TAG, "onConnectionFailed:" + connectionResult);
-        Toast.makeText(this,"onConnectionFailed:" + connectionResult,Toast.LENGTH_SHORT).show();
 
         if (!mIsResolving && mShouldResolve) {
             if (connectionResult.hasResolution()) {
@@ -937,10 +980,15 @@ public class LoginActivity extends FragmentActivity implements LoginCallback, Fr
             }
         } else {
             // Show the signed-out UI
-            Toast.makeText(this,"show Signed out",Toast.LENGTH_SHORT).show();
+            if (pDialog != null){
+                pDialog.dismiss();
+                pDialog.hide();
+            }
         }
     }
 
+    //ERROR DIALOG
+    //***********************************************************************************************************************
     private void showErrorDialog(ConnectionResult connectionResult) {
         GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
         int resultCode = apiAvailability.isGooglePlayServicesAvailable(this);
@@ -960,56 +1008,17 @@ public class LoginActivity extends FragmentActivity implements LoginCallback, Fr
                 Toast.makeText(this, errorString, Toast.LENGTH_SHORT).show();
 
                 mShouldResolve = false;
-            }
-        }
-    }
-
-    // [START on_sign_in_clicked]
-    @Override
-    public void onSignInClicked() {
-        // User clicked the sign-in button, so begin the sign-in process and automatically
-        // attempt to resolve any errors that occur.
-        mShouldResolve = true;
-        mGoogleApiClient.connect();
-
-        pDialog = new MaterialDialog.Builder(this)
-                .title(R.string.p_dialog_login_title)
-                .content(R.string.p_dialog_content_wait)
-                .theme(Theme.LIGHT)
-                .widgetColorRes(R.color.material_dialog_buttons)
-                .progress(true, 0)
-                .show();
-    }
-    // [END on_sign_in_clicked]
-
-
-    //Google logged in
-    private void loginWithGoogle(boolean isSignedIn) {
-        if (isSignedIn) {
-            Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
-            if (currentPerson != null) {
-                // Show users' email address (which requires GET_ACCOUNTS permission)
-                if (checkAccountsPermission()) {
-                    String currentAccount = Plus.AccountApi.getAccountName(mGoogleApiClient);
-                    tryLogin(currentAccount, null, GOOGLE_LOGIN);
-                }
-            } else {
-                // If getCurrentPerson returns null there is generally some error with the
-                // configuration of the application (invalid Client ID, Plus API not enabled, etc).
-                if(pDialog != null){
-                    pDialog.hide();
+                // Show the signed-out UI
+                if (pDialog != null){
                     pDialog.dismiss();
+                    pDialog.hide();
                 }
-                Toast.makeText(this,"null person",Toast.LENGTH_SHORT).show();
-                Log.d(TAG, "null person");
             }
         }
     }
 
-    /**
-     * Check if we have the GET_ACCOUNTS permission and request it if we do not.
-     * @return true if we have the permission, false if we do not.
-     */
+    //CHECK ACCOUNT PERMISSIONS
+    //***********************************************************************************************************************
     private boolean checkAccountsPermission() {
         final String perm = Manifest.permission.GET_ACCOUNTS;
         int permissionCheck = ContextCompat.checkSelfPermission(this, perm);
@@ -1038,6 +1047,35 @@ public class LoginActivity extends FragmentActivity implements LoginCallback, Fr
                     new String[]{perm},
                     RC_PERM_GET_ACCOUNTS);
             return false;
+        }
+    }
+
+    //TRY LOGIN WITH GOOGLE ACCOUNT
+    //***********************************************************************************************************************
+    private void tryGoogleLogin() {
+        Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
+        if (currentPerson != null) {
+            if(pDialog != null){
+                pDialog.dismiss();
+                pDialog.hide();
+            }
+            // Show signed-in user's name
+            String name = currentPerson.getDisplayName();
+
+            // Show users' email address (which requires GET_ACCOUNTS permission)
+            if (checkAccountsPermission()) {
+                String currentAccount = Plus.AccountApi.getAccountName(mGoogleApiClient);
+                tryLogin(currentAccount, null, GOOGLE_LOGIN);
+            }
+        } else {
+            // If getCurrentPerson returns null there is generally some error with the
+            // configuration of the application (invalid Client ID, Plus API not enabled, etc).
+            Log.w(TAG, getString(R.string.error_null_person));
+            if(pDialog != null){
+                pDialog.dismiss();
+                pDialog.hide();
+            }
+            Toast.makeText(this,"Error signin in",Toast.LENGTH_SHORT).show();
         }
     }
 

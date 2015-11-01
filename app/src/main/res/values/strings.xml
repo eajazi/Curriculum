@@ -25,6 +25,11 @@
     <!-- GOOGLE LOGIN -->
     <!-- Rationale for asking for Contacts -->
     <string name="contacts_permission_rationale">Contacts access is needed in order to retrieve your email address.</string>
+    <string name="error_null_person">
+        Error: Plus.PeopleApi.getCurrentPerson returned null. Ensure that the Google+ API is
+        enabled for your project, you have a properly configured google-services.json file
+        and that your device has an internet connection.
+    </string>
 
     <!-- GLOBAL STRINGS -->
     <string name="empty_content">empty</string>
